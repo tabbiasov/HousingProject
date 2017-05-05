@@ -251,9 +251,9 @@
                         data = dd;
                         myChart = new dimple.chart(svg,data);
                         myChart.setBounds(60, 70, 500, 330)
-                        yAxis = new dimple.axis(myChart, "x", null, "Median Income")
+                        xAxis = new dimple.axis(myChart, "x", null, "% White")
                         myChart.axes.push(xAxis)
-                        xAxis = myChart.addMeasureAxis("y", "% White");
+                        var yAxis = myChart.addMeasureAxis("y", "Median Income");
                         myChart.addMeasureAxis("z", "Radius");
                         mySeries = myChart.addSeries(["Tract ID", "Affordable Units","Borough"], dimple.plot.bubble);
                         mySeries.x = xAxis;
@@ -390,6 +390,7 @@
                           yAxis.title = "Percentile by " + yAxis.measure
                           myChart.draw(1000);
                           setcols() ;
+
                           setTimeout(function() {
                             setcols() ;
                           }, 1020);
