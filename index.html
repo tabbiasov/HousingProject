@@ -10,14 +10,25 @@
     <meta name="author" content="">
 
     <title>[UN]affordable housing NYC</title>
+    <!-- Latest compiled and minified CSS -->
 
+    <link rel="stylesheet" href="./css/bootstrap-theme.css">
+    <link rel="stylesheet" href="./css/equal-height-columns.css">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link href="/css/bootstrap-toggle.css" rel="stylesheet">
+    <script src="/js/bootstrap-toggle.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="/js/bootstrap.js"></script>
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/scrolling-nav.css" rel="stylesheet">
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
       <!-- Custom CSS -->
-  
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -78,14 +89,14 @@
 
     <!-- Intro Section -->
      <div class="container-fluid">
-         <section id="intro" class="intro-section"> 
+         <section id="intro" class="intro-section">
              <div class="row-eq-height">
                 <div class="col-md-3">
-                </div> 
+                </div>
                 <div class="col-md-6" col-centered>
                     <h1>[UN]<br/>affordable New York</h1>
                     <p><strong>[UN]affordable New York is a datavisualization project which aims to visualize the distribution of affordable housing development in NYC and how it relates to demographical characteristics</strong></p>
-                 <!--   
+                 <!--
                  <a class="btn btn-default page-scroll" href="#about">Click Me to Scroll Down!</a>
                  -->
                 </div>
@@ -96,9 +107,9 @@
     </div>
 <br>
 <br>
-            <div class="row-eq-height";">
+            <div class="row-eq-height">
                 <div class="col-md-3">
-                </div> 
+                </div>
                 <div class="col-md-6">
                 <img class="img-responsive col-md-14" src="img/Stuyvesant.jpg" style="max-height:400px;">
                 <p>Stuyvesant Town-Peter Cooper Village. Photo by Alec Jordan</p>
@@ -109,7 +120,7 @@
 
             <div class="row-eq-height">
                 <div class="col-md-3">
-                </div> 
+                </div>
                 <div class="col-md-3">
                 <img class="img-responsive col-md-14" src="img/SugarHill.jpg" style="max-height:435px; float:right" >
                 <p>Sugar Hill. Photo by Wade Zimmerman</p>
@@ -126,23 +137,23 @@
     <!-- About Section -->
     <div class="container-fluid">
     <section id="about" class="about-section">
-        
-    
+
+
         <div class="row-eq-height">
             <div class="col-md-3">
-            </div> 
+            </div>
             <div class="col-md-6">
                     <h2>Introduction</h2>
                     <p><strong>Housing costs have increased significantly throughout New York City since 1990. With the increasing rent burdens for low-and-moderate-income renters, inviting calls for more affordable housing. Mayor Bill de Blasio launched <a href="http://www.nyc.gov/html/housing/assets/downloads/pdf/housing_plan.pdf">Housing New York</a> plan in 2014, aimed to build and preserve 200,000 affordable housing units over the coming decades. </p>
                     </strong></p>
             </div>
             <div class="col-md-3">
-            </div> 
+            </div>
         </div>
 <!--
             <div class="row-eq-height" style="margin-top:20px;">
                 <div class="col-md-2">
-                </div> 
+                </div>
                 <div class="col-md-4">
                 <img class="img-responsive col-md-14" src="img/housingnewyork.png" style="max-height:300px; float:right" >
                 </div>
@@ -152,22 +163,22 @@
                 <div class="col-md-2">
                 </div>
             </div>
--->          
+-->
 <!--
         <div class="row-eq-height">
             <div class="col-md-2">
-            </div> 
+            </div>
             <div class="col-md-8">
                     <p><strong>He wants his affordable housing policies reach every New Yorker in need. But are these units equitably distributed in each neighborhood? One of the key policies of his plan is “Fostering diverse, livable neighborhoods”. But is this the case now? Does affordable housing help the neighborhood become more diverse and livable?  </p>
                     </strong></p>
             </div>
             <div class="col-md-2">
-            </div> 
+            </div>
         </div>
 -->
-            <div class="row-eq-height";">
+            <div class="row-eq-height">
                 <div class="col-md-3">
-                </div> 
+                </div>
                 <div class="col-md-6">
                 <img class="img-responsive col-md-14" src="img/Affordablehousing.gif" style="max-height:350px;">
                 </div>
@@ -177,18 +188,18 @@
             <div class="row-eq-height" style="margin-top:20px;">
                 <div class="col-md-12">
                 <br>
-                </div> 
+                </div>
 
             </div>
             </section>
         </div>
-    
- 
 
-    <!-- Services Section 
+
+
+    <!-- Services Section
     <div class="container">
     <section id="services" class="services-section">
-        
+
             <div class="row">
                 <div class="col-md-12">
                     <h2>Background</h2>
@@ -207,54 +218,303 @@
                     <h2>Visualization</h2>
                 </div>
             </div>
+            <div class="row-eq-height">
+              <div class="col-md-2">
+
+              </div>
+              <div class="col-md-7" style='margin-left:4%'>
+                <div id="chartContainer">
+                  <script src="/js/d3.js"></script>
+                  <script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script>
+                  <script type="text/javascript">
+                      var MySeries = null;
+                      var svg = dimple.newSvg("#chartContainer", 590, 450);
+                      var myChart = null;
+                      var xAxis = null;
+                      var yAxis = null;
+                      var data = null;
+                      function setcols() {
+                      svg.selectAll("text")
+                        .style("fill","white");
+                      svg.selectAll("g.tick").selectAll("text")
+                        .style("fill","#24EFA5");
+                      svg.selectAll("g.dimple-axis-group").selectAll("path")
+                        .style("stroke","#24EFA5");
+                      svg.selectAll("g.dimple-axis-group").selectAll("line")
+                        .style("stroke","#24EFA5");
+                      svg.selectAll("g.tick").selectAll("line.dimple-custom-gridline")
+                        .style("stroke","#24EFA5");
+                      svg.selectAll("g.tick").selectAll("line.dimple-custom-gridline")
+                        .style("opacity","0.3");
+                      };
+                      d3.tsv("/data/exampleData-l.tsv", function (dd) {
+                        data = dd;
+                        myChart = new dimple.chart(svg,data);
+                        myChart.setBounds(60, 70, 500, 330)
+                        yAxis = new dimple.axis(myChart, "x", null, "Median Income")
+                        myChart.axes.push(xAxis)
+                        xAxis = myChart.addMeasureAxis("y", "% White");
+                        myChart.addMeasureAxis("z", "Radius");
+                        mySeries = myChart.addSeries(["Tract ID", "Affordable Units","Borough"], dimple.plot.bubble);
+                        mySeries.x = xAxis;
+                        mySeries.y = yAxis;
+                        xAxis.title = "Percentile by " + xAxis.measure
+                        yAxis.title = "Percentile by " + yAxis.measure
+                        xAxis.overrideMin = 0;
+                        xAxis.overrideMax = 1;
+                        yAxis.overrideMin = 0;
+                        yAxis.overrideMax = 1;
+                        xAxis.fontSize = "14px";
+                        yAxis.fontSize = "14px";
+
+                        xAxis.ticks = 4;
+                        yAxis.ticks = 4;
+
+
+                        // mySeries.afterDraw = function (shape, data) {
+                        // 	// Get the shape as a d3 selection
+                        // 	var s = d3.select(shape),
+                        // 	rect = {
+                        // 		x: parseFloat(s.attr("x")),
+                        // 		y: parseFloat(s.attr("y")),
+                        // 		width: parseFloat(s.attr("width")),
+                        // 		height: parseFloat(s.attr("height"))
+                        // 	};
+                        // };
+                        mySeries.tooltipFontSize = "14px";
+                        mySeries.getTooltipText = function (e) {
+                          return [
+                              "Tract ID: " + e.aggField[0],
+                              "Located in " + e.aggField[2],
+                              "Affordable Units: " + e.aggField[1],
+                          ];
+                        };
+                        myChart.defaultColors = [
+                          new dimple.color("#24EFA5") // Set a red fill with a blue stroke
+                        ];
+
+                        var myLegend = myChart.addLegend(160, 10, 220, 100, "right");
+                        myChart.draw();
+
+                        setcols() ;
+
+                        d3.selectAll("circle").on("click", function (e) {
+                           console.log(e.aggField[0]);
+                           });
+
+                        myLegend.shapes.selectAll("rect")
+                            .style("fill", "#24EFA5")
+                            .style("stroke", "#24EFA5");
+
+
+                        myChart.legends = [];
+                        svg.selectAll("title_text")
+                          .data(["Click legend to","show/hide boroughs:"])
+                          .enter()
+                          .append("text")
+                            .attr("x", 62)
+                            .attr("y", function (d, i) { return 18 + i * 14; })
+                            .style("font-family", "sans-serif")
+                            .style("font-size", "10px")
+                            .style("fill", "white")
+                            .text(function (d) { return d; });
+
+                            // Get a unique list of Owner values to use when filtering
+                        var filterValues = dimple.getUniqueValues(data, "Borough");
+                        // Get all the rectangles from our now orphaned legend
+                        myLegend.shapes.selectAll("rect")
+                          // Add a click event to each rectangle
+                          .on("click", function (e) {
+                            // This indicates whether the item is already visible or not
+                            var hide = false;
+                            var newFilters = [];
+                            // If the filters contain the clicked shape hide it
+                            filterValues.forEach(function (f) {
+                              if (f === e.aggField.slice(-1)[0]) {
+                                hide = true;
+                              } else {
+                                newFilters.push(f);
+                              }
+                            });
+                            // Hide the shape or show it
+                            if (hide) {
+                              d3.select(this).style("fill", "black");
+
+                            } else {
+                              newFilters.push(e.aggField.slice(-1)[0]);
+                              d3.select(this).style("fill", "#24EFA5");
+
+                            }
+                            // Update the filters
+                            filterValues = newFilters;
+                            // Filter the data
+                            myChart.data = dimple.filterData(data, "Borough", filterValues);
+                            // Passing a duration parameter makes the chart animate. Without
+                            // it there is no transition
+                            myChart.draw(800);
+                            setcols() ;
+                            setTimeout(function() {
+                              setcols() ;
+                            }, 820);
+                          });
+
+
+                        mySeries.shapes
+                          .style("fill", "#FFFFFF")
+                          .style("stroke", "none")
+                          .style("opacity", .2);
+
+
+
+                        //d3.selectAll("circle")
+                        //      .attr("r", function(d) {return 1*Math.sqrt(d.r);});
+
+                        $('#Yaxis').change(function () {
+                          var selectedText = $(this).find("option:selected").text();
+                          yAxis.measure = selectedText;
+                          xAxis.title = "Percentile by " + xAxis.measure
+                          yAxis.title = "Percentile by " + yAxis.measure
+                          myChart.draw(1000);
+                          setcols() ;
+                          setTimeout(function() {
+                            setcols() ;
+                          }, 1020);
+                          //d3.selectAll("circle")
+                          //      .attr("r", function(d) {return 1*Math.sqrt(d.r);});
+                        });
+
+                        $('#Xaxis').change(function () {
+                          var selectedText = $(this).find("option:selected").text();
+                          xAxis.measure = selectedText;
+                          xAxis.title = "Percentile by " + xAxis.measure
+                          yAxis.title = "Percentile by " + yAxis.measure
+                          myChart.draw(1000);
+                          setcols() ;
+                          setTimeout(function() {
+                            setcols() ;
+                          }, 1020);
+                          //d3.selectAll("circle")
+                          //      .attr("r", function(d) {return 1*Math.sqrt(d.r);})y
+                        });
+
+
+                      });
+                  </script>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div style="margin-left:-140%; margin-top:10px; float:left;" >
+                  <input id="toggle-event" type="checkbox" data-width = "140px" data-height = "15px" data-toggle="toggle" data-off="City Percentiles" data-on="Borough Percentiles">
+                <script>$('#toggle-event').change(function() {
+                  if($(this).prop('checked')){
+                    d3.tsv("/data/exampleData-bb.tsv", function (dd) {
+                        myChart.data = dd;
+                        data = dd;
+                        myChart.draw(1000);
+                        setTimeout(function() {
+                        setcols();
+                         }, 1200);
+                       });
+                  } else {
+                    d3.tsv("/data/exampleData-l.tsv", function (dd) {
+                        myChart.data = dd;
+                        data = dd;
+                        myChart.draw(1000);
+                        setTimeout(function() {
+                        setcols();
+                         }, 1200);
+                       });
+                  };
+
+                //   if($(this).toggleClass('checked')){
+                //     d3.tsv("/data/exampleData-bb.tsv", function (data) {
+                //     myChart.data = data;
+                //     myChart.draw(1000);
+                //     setTimeout(function() {
+                //     setcols();
+                //      }, 1200);
+                //    });
+                //  } else {
+                //    console.log("a");
+                //  };
+               });</script>
+               </div>
+              </div>
+            </div>
+            <div class="row-eq-height" style="margin-top:15px; background-color: black; font-size:12px;">
+              <div class="col-md-3"></div>
+              <div class="col-md-1", style="height: 28px;line-height: 26px;">
+                <span style="float:right; vertical-align: middle; display: inline-block;">Show</span>
+              </div>
+              <div class="col-md-2point3">
+                <select class="form-control" id="Xaxis" name="YogaSpaceAccommodation">
+                <option value="PercHiSchPlus">% At Least High School</option>
+                <option value="PercEmpl">% Employed</option>
+                <option value="MedInc">Median Income</option>
+                <option selected="selected" value="PercWhite">% White</option>
+                </select>
+              </div>
+              <div class="col-md-1", style="height: 28px;line-height: 26px; text-align: center;">
+                <span style="marg vertical-align: middle; display: inline-block;">against</span>
+              </div>
+              <div class="col-md-2point3">
+                <select class="form-control" id="Yaxis" name="YogaSpaceAccommodation">
+                <option value="PercHiSchPlus">% At Least High School</option>
+                <option value="PercEmpl">% Employed</option>
+                <option selected="selected" value="MedInc">Median Income</option>
+                <option value="PercWhite">% White</option>
+                </select>
+              </div>
+              <div class="col-md-1"></div>
+            </div>
          </section>
      </div>
 
 
     <!-- Contact Section -->
-    
+
 
     <div class="container-fluid">
         <section id="stories" class="contact-section">
-        
-    
+
+
         <div class="row-eq-height">
             <div class="col-md-3">
-            </div> 
+            </div>
             <div class="col-md-6">
                     <h2>Stories</h2>
             </div>
             <div class="col-md-3">
-            </div> 
+            </div>
         </div>
 <br>
 <br>
 
         <div class="row-eq-height">
             <div class="col-md-3">
-            </div> 
+            </div>
             <div class="col-md-6">
                 <h3>Affordable housing boom in South Bronx</h3>
             </div>
             <div class="col-md-3">
-            </div> 
+            </div>
         </div>
 
         <div class="row-eq-height">
             <div class="col-md-3">
-            </div> 
+            </div>
             <div class="col-md-4">
                     <p>Although market-rate housing is scarce in Bronx, the affordable housing is rising in Bronx which targets at people who cannot pay market rates. More than 5,000 affordable apartments are being developed or planned recently with different kinds of motivations from the city. The developers are competing for sites in the South Bronx and the land prices keep climbing. There is a huge affordable housing project get approved by City Council known as La Central. This project plans to bring 992 apartments to the neighborhood spread out over five buildings. </p>
                     </p>
             <p class="ReadMore"><a href="https://www.nytimes.com/2017/03/03/realestate/the-bronx-is-building.html">Read More...</a></p>
             </div>
-            
+
             <div class="col-md-2">
                 <img class="img-responsive col-md-14" src="img/deblasio.png" style="max-height:200px" float:left>
             </div>
 
             <div class="col-md-3">
-            </div> 
+            </div>
         </div>
 <br>
 <br>
@@ -265,31 +525,31 @@
 
         <div class="row-eq-height">
             <div class="col-md-3">
-            </div> 
+            </div>
             <div class="col-md-6">
                 <h3>$1.4B revitalization plan brings more affordable housing to Central Brooklyn</h3>
             </div>
             <div class="col-md-3">
-            </div> 
+            </div>
         </div>
 
         <div class="row-eq-height">
             <div class="col-md-3">
-            </div> 
+            </div>
             <div class="col-md-4">
                     <p>Governor Cuomo has set aside $563 million for 3,000 units of affordable housing on six state-owned sites within these neighborhoods. The massive investment covers an expansive list of priorities for the neighborhoods of Crown Heights, East New York, Bedford-Stuyvesant, and Brownsville. People in these areas feared the gentrification caused by the investment. But the governor’s counsel, Alphonso David said “This plan counters gentrification, largely because of the housing component, and the jobs component.” </p>
                  </p>
             <p class="ReadMore"><a href="https://www.nytimes.com/2017/03/14/nyregion/cuomos-1-4-billion-plan-in-brooklyn-stirs-fears-of-gentrification.html?rref=collection%2Ftimestopic%2FAffordable%20Housing">Read More...</a></p>
             </div>
-           
+
 
             <div class="col-md-2">
-           
+
                 <img class="img-responsive col-md-14" src="img/deblasio.png" style="max-height:200px" float:left>
             </div>
 
             <div class="col-md-3">
-            </div> 
+            </div>
         </div>
         <br>
 
@@ -303,17 +563,17 @@
 
         <div class="row-eq-height">
             <div class="col-md-3">
-            </div> 
+            </div>
             <div class="col-md-6">
                 <h3>Affordable Housing vs. Gentrification in East Harlem</h3>
             </div>
             <div class="col-md-3">
-            </div> 
+            </div>
         </div>
 
         <div class="row-eq-height">
             <div class="col-md-3">
-            </div> 
+            </div>
             <div class="col-md-4">
                     <p>Rezoning has faced resistance in neighborhoods like East Harlem. The mayor’s strategy is  building a more affordable New York through greater height and density. However, a great opposition from lots of people who don’t want any changes in their neighborhoods and who don’t want affordable housing and who want only affordable housing.  The opponents thought mandatory zoning would create far too few apartments to meet the need. And for them, the construction means disruption, which inevitably means gentrification and dislocation.</p>
                     </p>
@@ -321,31 +581,31 @@
             </div>
 
             <div class="col-md-2">
-           
+
                 <img class="img-responsive col-md-14" src="img/deblasio.png" style="max-height:200px" float:left>
             </div>
 
             <div class="col-md-3">
-            </div> 
+            </div>
         </div>
 
 <div class="row-eq-height">
                 <div class="col-md-3">
-                </div> 
-                
+                </div>
+
         </section>
     </div>
 
 <!-- Intro Section -->
      <div class="container-fluid">
-         <section id="intro" class="intro-section"> 
+         <section id="intro" class="intro-section">
              <div class="row-eq-height">
                 <div class="col-md-3">
-                </div> 
+                </div>
                 <div class="col-md-6" col-centered>
                     <h3>Relevant Research</h3>
                     <p><strong><a href="http://furmancenter.org/research/publication/housing-neighborhoods-and-opportunity-the-location-of-new-york-citys-subsid">NYU Furman Center - Housing, Neighborhoods, and Opportunity: The Location of New York City’s Subsidized Affordable Housing</a></strong></p>
-                 <!--   
+                 <!--
                  <a class="btn btn-default page-scroll" href="#about">Click Me to Scroll Down!</a>
                  -->
                 </div>
@@ -360,7 +620,7 @@
 <!-- Services Section   -->
     <div class="container">
     <section id="services" class="services-section">
-        
+
             <div class="row">
                 <div class="col-md-12">
                     <h2>The team</h2>
@@ -369,7 +629,7 @@
 
             <div class="row-eq-height">
             <div class="col-md-2">
-            </div> 
+            </div>
             <div class="col-md-2">
                     <p><a href="https://tabbiasov.github.io/DataVis2017-ghp/">Timur Abbiasov</a></p>
                     <img class="img-responsive col-md-14" src="img/deblasio.png" style="max-height:200px" float:left>
@@ -389,9 +649,9 @@
                     <img class="img-responsive col-md-14" src="img/deblasio.png" style="max-height:200px" float:left>
 
             </div>
-            
+
             <div class="col-md-2">
-            </div> 
+            </div>
         </div>
     </section>
     </div>
