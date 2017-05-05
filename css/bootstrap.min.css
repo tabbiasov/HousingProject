@@ -1,0 +1,23 @@
+body {
+  height: 100%;
+  background-color: #000;
+}
+
+h1 {
+  margin: .67em 0;
+  font-size: 7em;
+}
+
+h2 {
+  margin: .67em 0;
+  font-size: 3em;
+}
+
+h3 {
+  margin: .67em 0;
+  font-size: 2em;
+}
+
+section {
+  background-color: black;
+}
