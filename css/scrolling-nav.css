@@ -62,3 +62,11 @@ of those sections to manage the look and feel of the site. */
     text-align: center;
     background: #000;
 }
+
+.row-eq-height {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
