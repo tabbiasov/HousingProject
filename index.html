@@ -247,7 +247,7 @@
                       svg.selectAll("g.tick").selectAll("line.dimple-custom-gridline")
                         .style("opacity","0.3");
                       };
-                      d3.tsv("/data/exampleData-l.tsv", function (dd) {
+                      d3.tsv("data/exampleData-l.tsv", function (dd) {
                         data = dd;
                         myChart = new dimple.chart(svg,data);
                         myChart.setBounds(60, 70, 500, 330)
@@ -407,7 +407,7 @@
                   <input id="toggle-event" type="checkbox" data-width = "140px" data-height = "15px" data-toggle="toggle" data-off="City Percentiles" data-on="Borough Percentiles">
                 <script>$('#toggle-event').change(function() {
                   if($(this).prop('checked')){
-                    d3.tsv("/data/exampleData-bb.tsv", function (dd) {
+                    d3.tsv("data/exampleData-bb.tsv", function (dd) {
                         myChart.data = dd;
                         data = dd;
                         myChart.draw(1000);
@@ -416,7 +416,7 @@
                          }, 1200);
                        });
                   } else {
-                    d3.tsv("/data/exampleData-l.tsv", function (dd) {
+                    d3.tsv("data/exampleData-l.tsv", function (dd) {
                         myChart.data = dd;
                         data = dd;
                         myChart.draw(1000);
